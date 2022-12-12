@@ -19,6 +19,8 @@ YELLOW = "\033[33m"
 CYAN = "\033[36m"
 
 if __name__ == '__main__':
+    os.makedirs(PROJECT_DIRECTORY.joinpath("data"), exist_ok = True)
+    shutil.move(PROJECT_DIRECTORY.joinpath(".gitplaceholder"), PROJECT_DIRECTORY.joinpath(".git"))
     print(
         "✅ Your project has been successfully generated.\n"
         f"📂 Enter it with {BOLD}cd {PACKAGE_NAME}{END}\n"
