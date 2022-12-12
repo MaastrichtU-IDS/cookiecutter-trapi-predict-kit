@@ -1,6 +1,5 @@
+import sys
 from typing import Optional, List
-
-from openpredict.predict_output import PredictOutput, TrapiRelation
 
 from openpredict import trapi_predict, PredictOptions, PredictOutput
 
@@ -39,5 +38,8 @@ def get_predictions(
 
 
 if __name__ == '__main__':
-    # Example to be run when the script is executed directly
-    print(get_predictions("drugbank:DB00002", PredictOptions()))
+    # To be run when the script is executed directly
+    input_id = "drugbank:DB00002"
+    if sys.argv[1]:
+        input_id = sys.argv[1]
+    print(get_predictions(input_id, PredictOptions()))

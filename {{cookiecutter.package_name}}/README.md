@@ -15,18 +15,23 @@ You will need Python >=3.8 and <3.11
    cd {{cookiecutter.package_name}}
    ```
 
-2. Install hatch to manage the project, then use hatch to install the dependencies, this will also pull the data required to run the models in the `data` folder with [`dvc`](https://dvc.org/):
+2. Install [`hatch`](https://hatch.pypa.io) to manage the project if not already done
 
    ```bash
-   pip install hatch
+   pip install --upgrade hatch
+   ```
+
+3. Use hatch to install the dependencies, this will also pull the data required to run the models in the `data` folder with [`dvc`](https://dvc.org/):
+
+   ```bash
    hatch -v env create
    ```
 
-3. Setup [`dvc`](https://dvc.org) for data version control. It helps you to easily store datasets used by your machine learning workflows, and keep track of changes in a way similar to git. Like git, with dvc you will need to choose a platform to publish your data, such as [DagsHub](https://dagshub.com/docs/integration_guide/dvc/) or [HuggingFace](https://dvc.org/doc/dvclive/api-reference/ml-frameworks/huggingface).
+4. See below to setup [`dvc`](https://dvc.org) for data version control. It helps you to easily store datasets used by your machine learning workflows, and keep track of changes in a way similar to git. Like git, with dvc you will need to choose a platform to publish your data, such as [DagsHub](https://dagshub.com/docs/integration_guide/dvc/) or [HuggingFace](https://dvc.org/doc/dvclive/api-reference/ml-frameworks/huggingface).
 
 ### Create a new project on DagsHub
 
-Here we document the process using DagsHub to publish data related to a ML experiment, but you could choose to use a different platform for your project.
+Here we document the process using [DagsHub](https://dagshub.com/docs/integration_guide/dvc/) to publish data related to a ML experiment, but you could choose to use a different platform for your project if you wish.
 
 ⚠️ Open source projects on DagsHub using the free plan have a 10G storage limit.
 
@@ -67,6 +72,12 @@ Then push the added data:
 hatch run dvc push
 ```
 
+Alternatively you can use this shortcut to add changes and push in one command:
+
+```bash
+hatch run push-data
+```
+
 ### Pull data
 
 ```bash
@@ -93,10 +104,10 @@ hatch run train
 
 ### Predict
 
-Run the prediction function with a default input ID:
+Run the prediction function providing an input ID:
 
 ```bash
-hatch run predict
+hatch run predict drugbank:DB00002
 ```
 
 ### Test
@@ -106,3 +117,19 @@ Run the tests locally:
 ```bash
 hatch run test -s
 ```
+
+### Add dependencies
+
+Add dependencies directly in the `pyproject.toml`. Try to keep the main dependencies minimal: just what is needed to run the predictions functions. And add all dependencies required for training in the `train` optional dependencies. 
+
+Hatch will automatically update the virtual environment the next time you use it to run a script.
+
+If you are facing issue with the dependencies (e.g. not updated properly), you can reset the environment with:
+
+```bash
+hatch env prune
+```
+
+## 🙏 Acknowledgments
+
+Project bootstrapped with https://github.com/MaastrichtU-IDS/cookiecutter-openpredict-api

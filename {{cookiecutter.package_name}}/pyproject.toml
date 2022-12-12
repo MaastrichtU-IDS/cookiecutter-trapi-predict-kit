@@ -64,7 +64,7 @@ features = [
 # ]
 
 [tool.hatch.envs.default.scripts]
-train = "python src/{{cookiecutter.module_name}}/train.py"
+train = "python src/{{cookiecutter.module_name}}/train.py {args}"
 predict = "python src/{{cookiecutter.module_name}}/predict.py {args}"
 test = "pytest {args}"
 format = [
@@ -72,7 +72,7 @@ format = [
     "autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place src tests --exclude=__init__.py",
     # "pre-commit run --all-files || true",
 ]
-add-data = [
+push-data = [
     "dvc add data",
     "dvc push",
 ]
