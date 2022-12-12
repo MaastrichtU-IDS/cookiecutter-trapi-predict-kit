@@ -12,7 +12,7 @@ keywords = [
     "Python",
 ]
 dependencies = [
-    "openpredict",
+    # "openpredict",
 ]
 
 [project.optional-dependencies]
@@ -60,6 +60,7 @@ features = [
 ]
 # post-install-commands = [
 #     "pre-commit install",
+#     "dvc pull",
 # ]
 
 [tool.hatch.envs.default.scripts]

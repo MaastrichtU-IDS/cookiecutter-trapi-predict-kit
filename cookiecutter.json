@@ -1,8 +1,8 @@
 {
-    "package_name": "my-package",
+    "package_name": "my-model",
     "module_name": "{{ cookiecutter.package_name.replace('-', '_') }}",
     "package_name_stylized": "{{ cookiecutter.module_name.replace('_', ' ').capitalize() }}",
-    "short_description": "A nice python package",
+    "short_description": "Machine learning models to produce predictions that can be integrated to Translator Reasoner APIs.",
     "github_organization_name": "your-org-or-username",
     "author_name": "Firstname Lastname",
     "author_email": "email@example.com",
