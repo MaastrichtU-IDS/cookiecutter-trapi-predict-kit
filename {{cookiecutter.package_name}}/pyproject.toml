@@ -1,0 +1,99 @@
+[project]
+requires-python = ">=3.8"
+version = "0.1.0"
+name = "{{cookiecutter.package_name}}"
+description = "{{cookiecutter.short_description}}"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+authors = [
+    { name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}" },
+]
+keywords = [
+    "Python",
+]
+dependencies = [
+    "openpredict",
+]
+
+[project.optional-dependencies]
+train = [
+    # "numpy",
+]
+test = [
+    "pytest >=7.1.3,<8.0.0",
+    "pytest-cov >=2.12.0,<4.0.0",
+    "mypy ==0.971",
+    "black == 22.8.0",
+    "isort >=5.0.6,<6.0.0",
+    "flake8 >=3.8.3,<6.0.0",
+    "Flake8-pyproject>=1.1.0.post0",
+    "flaky",
+]
+dev = [
+    "pre-commit >=2.17.0,<3.0.0",
+    "autoflake >=1.4.0,<2.0.0",
+    "jupyter",
+    "notebook",
+    "types-requests",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}"
+Documentation = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}"
+History = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}/releases"
+Tracker = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}/issues"
+Source = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+# ENVIRONMENTS AND SCRIPTS
+[tool.hatch.envs.default]
+features = [
+    "train",
+    "test",
+    "dev",
+]
+# post-install-commands = [
+#     "pre-commit install",
+# ]
+
+[tool.hatch.envs.default.scripts]
+train = "python src/{{cookiecutter.module_name}}/train.py"
+predict = "python src/{{cookiecutter.module_name}}/predict.py {args}"
+test = "pytest {args}"
+format = [
+    "isort src tests",
+    "autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place src tests --exclude=__init__.py",
+    # "pre-commit run --all-files || true",
+]
+add-data = [
+    "dvc add data",
+    "dvc push",
+]
+
+
+# TOOLS
+
+[tool.isort]
+line_length = 120
+skip = ["src/{{cookiecutter.module_name}}/__init__.py"]
+profile = "black"
+
+
+[tool.flake8]
+max-complexity = 17
+max-line-length = 120
+per-file-ignores = [
+    "__init__.py:F401",
+]
+ignore = [
+    "E501", # line too long
+    "E303", # too many blank lines
+    "E301", # expected 1 blank lines found 0
+    "W503", # line break before binary operator
+]
