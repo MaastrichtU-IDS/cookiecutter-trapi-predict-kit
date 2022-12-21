@@ -16,4 +16,4 @@ RUN pip install -e ".[train,test,dev]"
 
 RUN dvc pull -f
 
-CMD [ "python", "src/{{cookiecutter.module_name}}/train.py", "train-model" ]
+CMD [ "python", "src/{{cookiecutter.module_name}}/train.py" ]

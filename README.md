@@ -31,3 +31,10 @@ Your new python package will have the following:
 - Data management with `dvc`
 - Automated running of tests on each push with GitHub Actions
 
+## 🏗️ Development
+
+One liner to quickly reset a create default repo and run training:
+
+```bash
+cd .. && rm -rf my-model && cookiecutter ./cookiecutter-openpredict-api && cd my-model && hatch run train
+```

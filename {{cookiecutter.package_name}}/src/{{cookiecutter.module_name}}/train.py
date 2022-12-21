@@ -1,11 +1,10 @@
 import logging
 
 import typer
+from fairworkflows import FairWorkflow, is_fairstep, is_fairworkflow
+from openpredict import save
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
-from fairworkflows import FairWorkflow, is_fairstep, is_fairworkflow
-
-from openpredict import save
 
 log = logging.getLogger()
 

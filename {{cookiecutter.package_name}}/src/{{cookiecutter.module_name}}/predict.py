@@ -1,7 +1,6 @@
 import sys
-from typing import Optional, List
 
-from openpredict import trapi_predict, PredictOptions, PredictOutput, load
+from openpredict import PredictOptions, PredictOutput, load, trapi_predict
 
 
 # Define additional metadata to integrate this function in TRAPI
@@ -27,6 +26,7 @@ def get_predictions(
     ) -> PredictOutput:
     # You can easily load previously stored models
     loaded_model = load("models/{{cookiecutter.module_name}}")
+    print(loaded_model.model)
 
     # Add the code to generate predicted associations for the provided input
     # loaded_model.model.predict_proba(x)

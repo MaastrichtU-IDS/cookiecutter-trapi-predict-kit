@@ -2,7 +2,6 @@ from {{cookiecutter.module_name}}.predict import get_predictions
 from {{cookiecutter.module_name}}.train import train_model
 
 
-
 def test_get_predictions():
     predictions = get_predictions()
     assert len(predictions["hits"]) > 0

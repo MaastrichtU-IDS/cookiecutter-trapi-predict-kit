@@ -130,6 +130,20 @@ If you are facing issue with the dependencies (e.g. not updated properly), you c
 hatch env prune
 ```
 
+## 🐳 Docker
+
+You can also run the training script in docker, see the `docker-compose.yml` if you need to change the command to execute the script:
+
+```bash
+docker-compose run training
+```
+
+Or start a JupyterLab/VSCode workspace on http://localhost:8888:
+
+```bash
+docker-compose up workspace
+```
+
 ## 🙏 Acknowledgments
 
 Project bootstrapped with https://github.com/MaastrichtU-IDS/cookiecutter-openpredict-api
