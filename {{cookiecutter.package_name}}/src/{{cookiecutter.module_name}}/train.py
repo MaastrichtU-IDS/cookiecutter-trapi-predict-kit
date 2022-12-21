@@ -1,5 +1,6 @@
-import typer
 import logging
+
+import typer
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 from fairworkflows import FairWorkflow, is_fairstep, is_fairworkflow
@@ -38,14 +39,14 @@ def load_data():
     #     "y": y
     # }
 
-@is_fairstep(label='Load data', is_script_task=True)
+@is_fairstep(label='Load data y', is_script_task=True)
 def load_data_y():
     # We need to duplicate the use of load_iris because FAIRworkflow
     # doesn't support returning tuples or objects
     data, y = load_iris(return_X_y=True, as_frame=True)
     return y
 
-@is_fairstep(label='Load data y', is_script_task=True)
+@is_fairstep(label='Create and fit classifier', is_script_task=True)
 def fit_classifier(hyper_params, data, y):
     clf = RandomForestClassifier(
         n_jobs=hyper_params['n_jobs'],
@@ -71,7 +72,7 @@ def evaluate(model):
 
 
 @is_fairworkflow(label='{{cookiecutter.package_name_stylized}} training workflow')
-def training_workflow(n_jobs):
+def training_workflow(n_jobs: int):
 
     # Define models hyper params
     hyper_params = {
