@@ -12,8 +12,34 @@ on:
     branches: [ "main" ]
 
 jobs:
-  test:
 
+  CodeQL-Analysis:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write # required for all workflows
+      # only required for workflows in private repositories:
+      actions: read
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: python
+
+      # Autobuild attempts to build any compiled languages (C/C++, C#, Go, or Java).
+      # If this step fails, then you should remove it and run the build manually
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+
+  tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:

@@ -20,7 +20,8 @@ CYAN = "\033[36m"
 
 if __name__ == '__main__':
     os.makedirs(PROJECT_DIRECTORY.joinpath("data"), exist_ok = True)
-    shutil.move(PROJECT_DIRECTORY.joinpath(".gitplaceholder"), PROJECT_DIRECTORY.joinpath(".git"))
+    if '{{ cookiecutter.init_git|lower }}' != "false":
+        os.system(f"cd {PROJECT_DIRECTORY} && git init")
     print(
         f"✅ Your project has been successfully generated in {BOLD}{PACKAGE_NAME}{END}.\n"
         f"📂 Enter it with {BOLD}cd {PACKAGE_NAME}{END}\n"
