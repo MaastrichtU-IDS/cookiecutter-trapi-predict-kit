@@ -30,6 +30,6 @@ if __name__ == '__main__':
         f"- Check the documentation in the {BOLD}README.md{END} to learn how to work with the code generated, and improve it at your convenience\n"
         f"- Create a project on DagsHub, and link it to this repository, to publish the data (cf. README.md)\n"
         f"- Add dependencies in {BOLD}pyproject.toml{END}\n"
-        f"- Add your code for training and predictions in {BOLD}{MODEL_PATH}/{END}"
+        f"- Add your code for training and predictions in {BOLD}{MODEL_PATH}/{END}\n"
         f"- Update the tests in the {BOLD}test/{END} folder according to your model output"
     )

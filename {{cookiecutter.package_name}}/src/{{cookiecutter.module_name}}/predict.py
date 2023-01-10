@@ -7,8 +7,8 @@ from openpredict import PredictOptions, PredictOutput, load, trapi_predict
 @trapi_predict(path='/predict',
     name="Get predicted targets for a given entity",
     description="Return the predicted targets for a given entity: drug (DrugBank ID) or disease (OMIM ID), with confidence scores.",
-    # Define which relations can be predicted by this function in a TRAPI query
-    relations=[
+    # Define which edges can be predicted by this function in a TRAPI query
+    edges=[
         {
             'subject': 'biolink:Drug',
             'predicate': 'biolink:treats',
@@ -19,14 +19,26 @@ from openpredict import PredictOptions, PredictOutput, load, trapi_predict
             'predicate': 'biolink:treated_by',
             'object': 'biolink:Drug',
         },
-    ]
+    ],
+    nodes={
+        "biolink:Disease": {
+            "id_prefixes": [
+                "OMIM"
+            ]
+        },
+        "biolink:Drug": {
+            "id_prefixes": [
+                "DRUGBANK"
+            ]
+        }
+    }
 )
 def get_predictions(
         input_id: str, options: PredictOptions
     ) -> PredictOutput:
     # You can easily load previously stored models
-    loaded_model = load("models/{{cookiecutter.module_name}}")
-    print(loaded_model.model)
+    # loaded_model = load("models/{{cookiecutter.module_name}}")
+    # print(loaded_model.model)
 
     # Add the code to generate predicted associations for the provided input
     # loaded_model.model.predict_proba(x)

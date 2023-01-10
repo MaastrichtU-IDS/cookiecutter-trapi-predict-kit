@@ -2,6 +2,19 @@ version: "3"
 services:
 
   # Container used for training and testing
+  api:
+    build: .
+    volumes:
+      - ./:/app
+      - ~/.nanopub-docker:/root/.nanopub
+    environment:
+      PYTHONUNBUFFERED: '1'
+      DEV_MODE: 'true'
+      LOG_LEVEL: 'INFO'
+    ports:
+      - 8808:8808
+
+
   training:
     build: .
     volumes:
@@ -11,9 +24,12 @@ services:
       PYTHONUNBUFFERED: '1'
       DEV_MODE: 'true'
       LOG_LEVEL: 'INFO'
+    ports:
+      - 8808:8808
     entrypoint: python /app/src/{{cookiecutter.module_name}}/train.py
     # You can also run tests:
     # entrypoint: pytest -s
+
 
   # Container to deploy a JupyterLab/VSCode workspace for development
   workspace:

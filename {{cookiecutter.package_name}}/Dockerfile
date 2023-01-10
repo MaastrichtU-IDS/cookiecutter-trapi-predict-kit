@@ -16,4 +16,6 @@ RUN pip install -e ".[train,test,dev]"
 
 RUN dvc pull -f
 
-CMD [ "python", "src/{{cookiecutter.module_name}}/train.py" ]
+# CMD [ "python", "src/{{cookiecutter.module_name}}/train.py" ]
+
+CMD [ "uvicorn", "trapi.main:app", "--host", "0.0.0.0", "--port", "8808", "--reload" ]

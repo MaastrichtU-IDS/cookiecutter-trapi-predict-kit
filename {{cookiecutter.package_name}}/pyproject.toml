@@ -19,9 +19,11 @@ dependencies = [
     "typer",
     "dvc",
     # "openpredict >=0.1.0",
-    "openpredict@git+https://github.com/MaastrichtU-IDS/translator-openpredict.git@develop",
     # "fairworkflows",
+    "openpredict@git+https://github.com/MaastrichtU-IDS/translator-openpredict.git@develop",
     "fairworkflows@git+https://github.com/vemonet/fairworkflows.git",
+    # "openpredict@{root:uri}/../translator-openpredict",
+    # "fairworkflows@{root:uri}/../../nanopub/fairworkflows",
 ]
 
 [project.optional-dependencies]
@@ -42,6 +44,7 @@ dev = [
     "pre-commit >=2.17.0",
     "jupyter",
     "notebook",
+    "uvicorn",
 ]
 
 
@@ -67,6 +70,7 @@ features = [
 # ]
 
 [tool.hatch.envs.default.scripts]
+api = "uvicorn trapi.main:app --host 0.0.0.0 --port 8808 --log-level=debug --reload"
 train = "python src/{{cookiecutter.module_name}}/train.py {args}"
 predict = "python src/{{cookiecutter.module_name}}/predict.py {args}"
 test = "pytest {args}"
