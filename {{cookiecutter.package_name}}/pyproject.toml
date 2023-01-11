@@ -18,7 +18,7 @@ keywords = [
 dependencies = [
     "typer",
     "dvc",
-    # "openpredict >=0.1.0",
+    # "openpredict >=0.2.1",
     # "fairworkflows",
     "openpredict@git+https://github.com/MaastrichtU-IDS/translator-openpredict.git@develop",
     "fairworkflows@git+https://github.com/vemonet/fairworkflows.git",

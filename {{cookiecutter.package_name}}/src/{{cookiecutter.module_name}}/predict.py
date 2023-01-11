@@ -1,4 +1,5 @@
 import sys
+from typing import Optional
 
 from openpredict import PredictOptions, PredictOutput, load, trapi_predict
 
@@ -34,7 +35,7 @@ from openpredict import PredictOptions, PredictOutput, load, trapi_predict
     }
 )
 def get_predictions(
-        input_id: str, options: PredictOptions
+        input_id: str, options: Optional[PredictOptions] = None
     ) -> PredictOutput:
     # You can easily load previously stored models
     # loaded_model = load("models/{{cookiecutter.module_name}}")

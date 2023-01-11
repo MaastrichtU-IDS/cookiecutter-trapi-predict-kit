@@ -11,7 +11,7 @@ log = logging.getLogger()
 cli = typer.Typer(help="Training for models")
 
 @cli.command(help='Train a model')
-def train_model(n_jobs: int = 2):
+def train_model(n_jobs = 2):
     model_id = "{{cookiecutter.module_name}}"
 
     workflow = FairWorkflow.from_function(training_workflow)
@@ -23,10 +23,12 @@ def train_model(n_jobs: int = 2):
     prov.publish_as_nanopub(use_test_server=True)
 
     # Actually run the training workflow
-    training_workflow(n_jobs)
+    loaded_model = training_workflow(n_jobs)
 
     workflow._rdf.serialize(f"models/{model_id}.workflow.trig", format="trig")
     prov._rdf.serialize(f"models/{model_id}.prov.trig", format="trig")
+
+    return loaded_model
 
 
 @is_fairstep(label='Load data', is_script_task=True)
@@ -69,6 +71,17 @@ def evaluate(model):
     }
 
 
+@is_fairstep(label='Save the trained model', is_script_task=True)
+def save_model(model, path, sample_data, scores, hyper_params):
+    loaded_model = save(
+        model,
+        path,
+        sample_data=sample_data,
+        scores=scores,
+        hyper_params=hyper_params,
+    )
+    return loaded_model
+
 
 @is_fairworkflow(label='{{cookiecutter.package_name_stylized}} training workflow')
 def training_workflow(n_jobs: int):
@@ -89,14 +102,14 @@ def training_workflow(n_jobs: int):
     scores = evaluate(model)
 
     # Save the model generated to the models/ folder
-    path = save(
+    loaded_model = save_model(
         model,
         "models/{{cookiecutter.module_name}}",
         sample_data=data,
         scores=scores,
         hyper_params=hyper_params,
     )
-    return path
+    return loaded_model
     # Optionally you can save other files (dataframes, JSON objects) in the data/ folder
 
 
