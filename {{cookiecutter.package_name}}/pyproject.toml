@@ -18,12 +18,9 @@ keywords = [
 dependencies = [
     "typer",
     "dvc",
-    # "openpredict >=0.2.1",
-    # "fairworkflows",
-    "openpredict@git+https://github.com/MaastrichtU-IDS/translator-openpredict.git@develop",
-    "fairworkflows@git+https://github.com/vemonet/fairworkflows.git",
+    "openpredict >=0.2.1",
+    # "openpredict@git+https://github.com/MaastrichtU-IDS/translator-openpredict.git@develop",
     # "openpredict@{root:uri}/../translator-openpredict",
-    # "fairworkflows@{root:uri}/../../nanopub/fairworkflows",
 ]
 
 [project.optional-dependencies]
