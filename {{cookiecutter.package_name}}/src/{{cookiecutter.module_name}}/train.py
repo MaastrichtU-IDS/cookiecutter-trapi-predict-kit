@@ -1,7 +1,7 @@
 import logging
 
 import typer
-from openpredict import save
+from trapi_predict_kit import save
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 

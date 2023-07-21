@@ -99,7 +99,7 @@ You are free to setup your development workflow as you wish, consider those inst
 Deploy  your prediction function as a Translator Reasoner API on http://localhost:8808:
 
 ```bash
-hatch -v run api
+hatch -v run dev
 ```
 
 ### Train
@@ -128,7 +128,7 @@ hatch run test -s
 
 ### Add dependencies
 
-Add dependencies directly in the `pyproject.toml`. Try to keep the main dependencies minimal: just what is needed to run the predictions functions. And add all dependencies required for training in the `train` optional dependencies. 
+Add dependencies directly in the `pyproject.toml`. Try to keep the main dependencies minimal: just what is needed to run the predictions functions. And add all dependencies required for training in the `train` optional dependencies.
 
 Hatch will automatically update the virtual environment the next time you use it to run a script.
 
@@ -160,4 +160,4 @@ docker-compose up workspace
 
 ## 🙏 Acknowledgments
 
-Project bootstrapped with https://github.com/MaastrichtU-IDS/cookiecutter-openpredict-api
+Project bootstrapped with https://github.com/MaastrichtU-IDS/cookiecutter-trapi-predict-kit

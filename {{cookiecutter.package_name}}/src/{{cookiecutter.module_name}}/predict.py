@@ -1,7 +1,7 @@
 import sys
 from typing import Optional
 
-from openpredict import PredictOptions, PredictOutput, load, trapi_predict
+from trapi_predict_kit import PredictOptions, PredictOutput, trapi_predict
 
 
 # Define additional metadata to integrate this function in TRAPI
@@ -38,6 +38,7 @@ def get_predictions(
         input_id: str, options: Optional[PredictOptions] = None
     ) -> PredictOutput:
     # You can easily load previously stored models
+    # from trapi_predict_kit import load
     # loaded_model = load("models/{{cookiecutter.module_name}}")
     # print(loaded_model.model)
 

@@ -1,7 +1,7 @@
 import logging
 
-from openpredict.config import settings
-from openpredict import TRAPI
+from trapi_predict_kit.config import settings
+from trapi_predict_kit import TRAPI
 from {{cookiecutter.module_name}}.predict import get_predictions
 
 
