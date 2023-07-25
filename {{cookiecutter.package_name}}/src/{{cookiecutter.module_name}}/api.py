@@ -12,9 +12,9 @@ logging.basicConfig(level=log_level)
 
 openapi_info = {
     "contact": {
-        "name": "{{cookiecutter.author_name}}",
-        "email": "{{cookiecutter.author_email}}",
-        # "x-id": "{{cookiecutter.author_orcid}}",
+        "name": "{{cookiecutter.full_name}}",
+        "email": "{{cookiecutter.email}}",
+        # "x-id": "{{cookiecutter.orcid}}",
         "x-role": "responsible developer",
     },
     "license": {

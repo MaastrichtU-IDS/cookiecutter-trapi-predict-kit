@@ -3,20 +3,20 @@
     "module_name": "{{ cookiecutter.package_name.replace('-', '_') }}",
     "package_name_stylized": "{{ cookiecutter.module_name.replace('_', ' ').capitalize() }}",
     "short_description": "Machine learning models to produce predictions that can be integrated to Translator Reasoner APIs.",
-    "github_organization_name": "your-org-or-username",
-    "author_name": "Firstname Lastname",
-    "author_email": "email@example.com",
-    "author_orcid": "https://orcid.org/0000-0000-0000-0000",
+    "github_username": "your-org-or-username",
+    "full_name": "Firstname Lastname",
+    "email": "email@example.com",
+    "orcid": "https://orcid.org/0000-0000-0000-0000",
     "init_git": "true",
     "__prompts__": {
         "package_name": "Your package name",
         "module_name": "The module name",
         "package_name_stylized": "Package name stylized",
         "short_description": "Short description",
-        "github_organization_name": "Your GitHub username or organization",
-        "author_name": "Author name",
-        "author_email": "Author email",
-        "author_orcid": "Author ORCID",
+        "github_username": "Your GitHub username or organization",
+        "full_name": "Author name",
+        "email": "Author email",
+        "orcid": "Author ORCID",
         "init_git": "Initialize git repository"
     }
 }
