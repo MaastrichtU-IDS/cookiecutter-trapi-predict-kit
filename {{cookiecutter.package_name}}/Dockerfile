@@ -1,6 +1,6 @@
 FROM python:3.8
 
-LABEL org.opencontainers.image.source="https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}"
+LABEL org.opencontainers.image.source="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}"
 
 # Change the current user to root and the working directory to /app
 USER root

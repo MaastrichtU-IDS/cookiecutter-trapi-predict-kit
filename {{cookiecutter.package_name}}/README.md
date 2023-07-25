@@ -1,6 +1,6 @@
 # 🔮 {{cookiecutter.package_name_stylized}}
 
-[![Tests](https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}/actions/workflows/test.yml/badge.svg)](https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}/actions/workflows/test.yml)
+[![Tests](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}/actions/workflows/test.yml/badge.svg)](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}/actions/workflows/test.yml)
 
 {{cookiecutter.short_description}}
 
@@ -11,7 +11,7 @@ You will need Python >=3.8 and <3.11
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}
+   git clone https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}
    cd {{cookiecutter.package_name}}
    ```
 
@@ -42,7 +42,7 @@ Here we document the process using [DagsHub](https://dagshub.com/docs/integratio
 3. Set your DagsHub credentials in your local terminal (add these commands to your `~/.bashrc` or `~/.zshrc` to enable it automatically on boot):
 
    ```bash
-   export DAGSHUB_USER="{{cookiecutter.github_organization_name}}"
+   export DAGSHUB_USER="{{cookiecutter.github_username}}"
    export DAGSHUB_TOKEN="TOKEN"
    ```
 

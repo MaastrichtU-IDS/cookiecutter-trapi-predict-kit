@@ -21,7 +21,7 @@ openapi_info = {
         "name": "MIT license",
         "url": "https://opensource.org/licenses/MIT",
     },
-    "termsOfService": 'https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}/blob/main/LICENSE.txt',
+    "termsOfService": 'https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}/blob/main/LICENSE.txt',
 
     "x-translator": {
         "component": 'KP',

@@ -39,11 +39,11 @@ test = [
 
 
 [project.urls]
-Homepage = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}"
-Documentation = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}"
-History = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}/releases"
-Tracker = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}/issues"
-Source = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiecutter.package_name}}"
+Homepage = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}"
+Documentation = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}"
+History = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}/releases"
+Tracker = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}/issues"
+Source = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}"
 
 
 
@@ -52,7 +52,6 @@ Source = "https://github.com/{{cookiecutter.github_organization_name}}/{{cookiec
 features = [
     "train",
     "test",
-    "dev",
 ]
 post-install-commands = [
     "pre-commit install",

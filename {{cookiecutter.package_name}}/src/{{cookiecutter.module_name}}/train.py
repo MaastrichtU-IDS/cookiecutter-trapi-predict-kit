@@ -49,8 +49,7 @@ def save_model(model, path, sample_data, scores, hyper_params):
 
 
 @cli.command(help='Train a model')
-def training_workflow(n_jobs: int):
-
+def training_workflow(n_jobs: int = 2):
     # Define models hyper params
     hyper_params = {
         'n_jobs': n_jobs,

@@ -1,5 +1,5 @@
 from {{cookiecutter.module_name}}.predict import get_predictions
-from {{cookiecutter.module_name}}.train import train_model
+from {{cookiecutter.module_name}}.train import training_workflow
 
 input_id = "drugbank:DB00002"
 
@@ -11,7 +11,7 @@ def test_get_predictions():
 
 
 def test_train_model():
-    loaded_model = train_model()
+    loaded_model = training_workflow()
     assert loaded_model is not None
     # scores = loaded_model.scores
     # assert 0.80 < scores['precision'] < 0.95
