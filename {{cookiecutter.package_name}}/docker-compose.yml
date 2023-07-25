@@ -2,7 +2,7 @@ version: "3"
 services:
 
   # Container used for training and testing
-  api:
+  trapi:
     build: .
     volumes:
       - ./:/app
@@ -13,34 +13,5 @@ services:
       LOG_LEVEL: 'INFO'
     ports:
       - 8808:8808
-
-
-  training:
-    build: .
-    volumes:
-      - ./:/app
-      - ~/.nanopub-docker:/root/.nanopub
-    environment:
-      PYTHONUNBUFFERED: '1'
-      DEV_MODE: 'true'
-      LOG_LEVEL: 'INFO'
-    ports:
-      - 8808:8808
-    entrypoint: python /app/src/{{cookiecutter.module_name}}/train.py
-    # You can also run tests:
-    # entrypoint: pytest -s
-
-
-  # Container to deploy a JupyterLab/VSCode workspace for development
-  workspace:
-    image: ghcr.io/maastrichtu-ids/jupyterlab
-    ports:
-      - 8888:8888
-    volumes:
-      - ./:/home/jovyan/work
-    user: root
-    environment:
-      - GRANT_SUDO=yes
-      - LOG_LEVEL=INFO
-      # With password:
-      # - JUPYTER_TOKEN=password
+  # If you want to run training:
+  # entrypoint: python /app/src/{{cookiecutter.module_name}}/train.py

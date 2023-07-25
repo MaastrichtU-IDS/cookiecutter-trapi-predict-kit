@@ -140,22 +140,10 @@ hatch env prune
 
 ## 🐳 Docker
 
-You can also run the training script in docker, see the `docker-compose.yml` if you need to change the command to execute the script:
+Start the TRAPI API:
 
 ```bash
-docker-compose run training
-```
-
-Or start the TRAPI API:
-
-```bash
-docker-compose up api
-```
-
-Or start a JupyterLab/VSCode workspace on http://localhost:8888:
-
-```bash
-docker-compose up workspace
+docker-compose up
 ```
 
 ## 🙏 Acknowledgments

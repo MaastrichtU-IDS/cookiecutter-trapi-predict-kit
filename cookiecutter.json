@@ -7,5 +7,16 @@
     "author_name": "Firstname Lastname",
     "author_email": "email@example.com",
     "author_orcid": "https://orcid.org/0000-0000-0000-0000",
-    "init_git": "true"
+    "init_git": "true",
+    "__prompts__": {
+        "package_name": "Your package name",
+        "module_name": "The module name",
+        "package_name_stylized": "Package name stylized",
+        "short_description": "Short description",
+        "github_organization_name": "Your GitHub username or organization",
+        "author_name": "Author name",
+        "author_email": "Author email",
+        "author_orcid": "Author ORCID",
+        "init_git": "Initialize git repository"
+    }
 }

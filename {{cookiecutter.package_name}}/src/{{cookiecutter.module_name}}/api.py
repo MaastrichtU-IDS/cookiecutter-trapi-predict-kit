@@ -10,8 +10,6 @@ if settings.DEV_MODE:
     log_level = logging.INFO
 logging.basicConfig(level=log_level)
 
-predict_endpoints = [ get_predictions ]
-
 openapi_info = {
     "contact": {
         "name": "{{cookiecutter.author_name}}",
@@ -49,25 +47,15 @@ openapi_info = {
     }
 }
 
-servers = []
-if settings.VIRTUAL_HOST:
-    servers = [
-        {
-            "url": f"https://{settings.VIRTUAL_HOST}",
-            "description": 'TRAPI ITRB Production Server',
-            "x-maturity": 'production'
-        },
-    ]
-
 app = TRAPI(
-    predict_endpoints=predict_endpoints,
-    servers=servers,
+    predict_endpoints=[ get_predictions ],
     info=openapi_info,
     title='{{cookiecutter.package_name_stylized}} TRAPI',
     version='1.0.0',
     openapi_version='3.0.1',
     description="""{{cookiecutter.short_description}}
 \n\nService supported by the [NCATS Translator project](https://ncats.nih.gov/translator/about)""",
-    dev_mode=True,
+    # itrb_url_prefix="{{cookiecutter.package_name}}",
+    # dev_server_url="https://{{cookiecutter.package_name}}.semanticscience.org",
 )
 

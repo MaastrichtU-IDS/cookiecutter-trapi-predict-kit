@@ -60,7 +60,7 @@ post-install-commands = [
 ]
 
 [tool.hatch.envs.default.scripts]
-dev = "uvicorn trapi.main:app --host 0.0.0.0 --port 8808 --log-level=debug --reload"
+dev = "uvicorn {{cookiecutter.module_name}}.api:app --host 0.0.0.0 --port 8808 --log-level=debug --reload"
 train = "python src/{{cookiecutter.module_name}}/train.py {args}"
 predict = "python src/{{cookiecutter.module_name}}/predict.py {args}"
 test = [
