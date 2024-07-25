@@ -6,7 +6,8 @@ from {{cookiecutter.module_name}}.predict import get_predictions
 
 
 log_level = logging.ERROR
-if settings.DEV_MODE:
+DEV_MODE = False
+if DEV_MODE == True:
     log_level = logging.INFO
 logging.basicConfig(level=log_level)
 
