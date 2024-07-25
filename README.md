@@ -36,5 +36,5 @@ Your new python package will have the following:
 One liner to quickly reset a create default repo and run training:
 
 ```bash
-cd .. && rm -rf my-model && cookiecutter ./cookiecutter-trapi-predict-kit && cd my-model && hatch run train
+cd .. && rm -rf my-model && cookiecutter ./cookiecutter-trapi-predict-kit && cd my-model && hatch run train && hatch run predict
 ```
