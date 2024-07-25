@@ -1,10 +1,12 @@
 from {{cookiecutter.module_name}}.predict import get_predictions
 from {{cookiecutter.module_name}}.train import training_workflow
-
+from trapi_predict_kit import PredictInput
 input_id = "drugbank:DB00002"
 
 def test_get_predictions():
-    predictions = get_predictions(input_id)
+    input = PredictInput()
+    input.subjects = [input_id]
+    predictions = get_predictions(input)
     print(predictions)
     assert len(predictions["hits"]) > 0
     assert len(predictions["hits"]) == predictions["count"]
