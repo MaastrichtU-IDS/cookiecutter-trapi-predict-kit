@@ -1,7 +1,7 @@
 import sys
 from typing import Optional
 
-from trapi_predict_kit import PredictOptions, PredictOutput, trapi_predict
+from trapi_predict_kit import PredictOptions, PredictInput, PredictOutput, trapi_predict
 
 
 # Define additional metadata to integrate this function in TRAPI
@@ -22,48 +22,54 @@ from trapi_predict_kit import PredictOptions, PredictOutput, trapi_predict
         },
     ],
     nodes={
-        "biolink:Disease": {
-            "id_prefixes": [
-                "OMIM"
-            ]
-        },
         "biolink:Drug": {
             "id_prefixes": [
                 "DRUGBANK"
             ]
+        },
+        "biolink:Disease": {
+            "id_prefixes": [
+                "OMIM"
+            ]
         }
     }
 )
-def get_predictions(
-        input_id: str, options: Optional[PredictOptions] = None
-    ) -> PredictOutput:
-    # You can easily load previously stored models
+def get_predictions(request: PredictInput) -> PredictOutput:
+    # Available props: request.subjects, request.objects, request.options
+    
+    # Load previously stored models
     # from trapi_predict_kit import load
     # loaded_model = load("models/{{cookiecutter.module_name}}")
     # print(loaded_model.model)
 
-    # Add the code to generate predicted associations for the provided input
+    # Generate predicted associations for the provided input
     # loaded_model.model.predict_proba(x)
 
-    # Predictions results should be a list of entities
-    # for which there is a predicted association with the input entity
-    predictions = {
-        "hits": [
-            {
-                "id": "DB00001",
-                "type": "biolink:Drug",
-                "score": 0.12345,
-                "label": "Leipirudin",
-            }
-        ],
-        "count": 1,
-    }
-    return predictions
+    predictions = []
+    for subj in request.subjects:
+       predictions.append({
+           "subject": subj,
+           "object": "OMIM:246300",
+           "score": 0.12345,
+           "object_label": "Leipirudin",
+           "object_type": "biolink:Drug",
+       })
+    for obj in request.objects:
+       predictions.append({
+           "subject": "DRUGBANK:DB00001",
+           "object": obj,
+           "score": 0.12345,
+           "object_label": "Leipirudin",
+           "object_type": "biolink:Drug",
+       })
+    return {"hits": predictions, "count": len(predictions)}
 
 
 if __name__ == '__main__':
     # To be run when the script is executed directly
-    input_id = "drugbank:DB00002"
-    if sys.argv[1]:
-        input_id = sys.argv[1]
-    print(get_predictions(input_id, PredictOptions()))
+    drug_id = "drugbank:DB00002"
+    if len(sys.argv) > 1:
+        drug_id = sys.argv[1]
+    input = PredictInput()
+    input.subjects = [drug_id]
+    print(get_predictions(input))
